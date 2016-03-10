@@ -1,0 +1,28 @@
+language: bash
+
+sudo: false
+addons:
+  apt:
+    packages:
+    - debhelper
+    - dpkg-dev
+
+script:
+- sh update-version.sh
+- dpkg-buildpackage -us -uc
+
+deploy:
+  provider: bintray
+  file: deploy.json
+  user:
+    secure: k3KYU5y2ef1PwOFu7KJ2SCYobsw1FoGxVH/cjfkJca07EGMd3K1dl1mxt/6kKIaUD5gHTsvAereHuclI3KgOqun2fk9ZbiRqhH/UvxfNioHbsWUVQcU28siDDxzOd2Q2T1aeGF2IlfyhO5EdeZ8ZCLmbnIgt5ze/AiYtmM5t9y5xjxFBXKfhSbsLOmAXuLWx39X3SA4otiet2bQYmvy8unnZ0VhPCoMvNb9UeEOdb8S0p80ljBR+QQXE4TJko76nPfbSn6z60cgj3JQtlFoUZYzXajVRv0Th0Q7ZzB0Od+hpmqKdh6m99gMYmJZkD/omZpfptPcdD7e+I8RTfP4P7IAcDT2L0G5PbClVPFqnkl8TAy/exUKh6DCtgkd7CJL9Gd5OHhIcNX+x6yeq6yPQoktYzV6MXk8un0ytR1gP955YH+T7n/HKysd3cY9A/3Ux4L8BupXCO7ZF5+5PwMikI1UThebE0Fcbv8PTrKdQyj4Kg4Mp8oQGspC/WzY+q7TKsS06y9BRmSDAExIv+vuJEbqtTxEZPcG5xGbKrLagvT5QHaLohX4LXumZrP+UKo6Ogt/ptBmk4NwFHctMgjT7vwGDDwhemfS6goOBxdpwQxWF2C8rg4pl8uoOz/sxxih1RS4SKMcXvCIzm7iwIwNcT504mN9cBuFl0Cl/0BL0jvM=
+  key:
+    secure: iuZav5eLH4QWZ41g8xC3vTbcvSTYEWZwmmu7jWpN6fWvGi6jTWbOzSIg9mW4rsc/jZkZf6yyrBDwrjA4LMouPx/PZyYHBcFMsTdede48TJkSUZ0RvbYL5RZbEpBpOttCYf6JtTV2kfRnj9S/qUjJYWiS/GVGIK3lFrhLPKvvSVRV2zsvwEYCg+C+1Snh7wOFxnvNUBdbYj5mCvzLlmKGJr7FJHluTWiHojqapycCZZJPXcG1j2xQYYswZPg2Ch9ZAfQta9YE/l6eZkasgjhVceDyIPMAQJ5YqqrQs3mO0HCMOYv8iPcYO9IBXUoTa1leURLeag2/vdMV5SazCY0ezN71/0lP9XF1q+J4n2lc7aXePG1rjWUe2eUEdBGgcSkjjSuDptfA4yB0MbZo9eFtWzbD2nKXuvBzmuuEwi085wvWK5a7M1ZcUHUM6grchLCyufT2+u83kEOpVVYLxJP3WBfpUy4gko1713FWtcWf7moCQEXpgUul5PJqYxxsrMdcwcm2zfBkRV7vrh8Z6cuJ5xpcNUXyNsad9nGOO1vEKo3k8kFD1cgsQVbnOSSMhVJVPBF4jFbWv/HW063RKzGGYQzuWB5WuEk9l4zhljVvOY7F2bqJzaJmgxEqGOiFEaNaATJBms/bVNDRXpKZlaaI7ZolNACHwHMN6JsxzpHlWac=
+
+notifications:
+  webhooks:
+    urls:
+    - https://webhooks.gitter.im/e/13627e9a6e8fa0dec084
+    on_success: change
+    on_failure: always
+    on_start: never

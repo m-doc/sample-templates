@@ -1,0 +1,11 @@
+Source: mdoc-sample-templates
+Maintainer: m-doc <info@m-doc.org>
+Section: admin
+Priority: optional
+Standards-Version: 3.9.7
+Build-Depends: debhelper (>= 9)
+
+Package: mdoc-sample-templates
+Architecture: all
+Description: none
+ none

@@ -1,0 +1,26 @@
+{
+  "package": {
+    "name": "mdoc-sample-templates",
+    "repo": "debian",
+    "subject": "m-doc",
+    "website_url": "https://github.com/m-doc/sample-templates",
+    "issue_tracker_url": "https://github.com/m-doc/sample-templates/issues",
+    "vcs_url": "https://github.com/m-doc/sample-templates.git",
+    "licenses": [ "Apache-2.0" ]
+  },
+  "version": {
+    "name": "VERSION"
+  },
+  "files": [
+    {
+      "includePattern": "../(.*VERSION.*\.deb)",
+      "uploadPattern": "$1",
+      "matrixParams": {
+        "deb_distribution": "stable",
+        "deb_component": "main",
+        "deb_architecture": "all"
+      }
+    }
+  ],
+  "publish": true
+}
