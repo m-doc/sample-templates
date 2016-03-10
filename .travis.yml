@@ -19,6 +19,13 @@ deploy:
   key:
     secure: iuZav5eLH4QWZ41g8xC3vTbcvSTYEWZwmmu7jWpN6fWvGi6jTWbOzSIg9mW4rsc/jZkZf6yyrBDwrjA4LMouPx/PZyYHBcFMsTdede48TJkSUZ0RvbYL5RZbEpBpOttCYf6JtTV2kfRnj9S/qUjJYWiS/GVGIK3lFrhLPKvvSVRV2zsvwEYCg+C+1Snh7wOFxnvNUBdbYj5mCvzLlmKGJr7FJHluTWiHojqapycCZZJPXcG1j2xQYYswZPg2Ch9ZAfQta9YE/l6eZkasgjhVceDyIPMAQJ5YqqrQs3mO0HCMOYv8iPcYO9IBXUoTa1leURLeag2/vdMV5SazCY0ezN71/0lP9XF1q+J4n2lc7aXePG1rjWUe2eUEdBGgcSkjjSuDptfA4yB0MbZo9eFtWzbD2nKXuvBzmuuEwi085wvWK5a7M1ZcUHUM6grchLCyufT2+u83kEOpVVYLxJP3WBfpUy4gko1713FWtcWf7moCQEXpgUul5PJqYxxsrMdcwcm2zfBkRV7vrh8Z6cuJ5xpcNUXyNsad9nGOO1vEKo3k8kFD1cgsQVbnOSSMhVJVPBF4jFbWv/HW063RKzGGYQzuWB5WuEk9l4zhljVvOY7F2bqJzaJmgxEqGOiFEaNaATJBms/bVNDRXpKZlaaI7ZolNACHwHMN6JsxzpHlWac=
 
+after_deploy:
+- cd scripts && sh cloud-install.sh
+
+before_install:
+- openssl aes-256-cbc -K $encrypted_782789869dae_key -iv $encrypted_782789869dae_iv
+  -in scripts/cloud-identity.enc -out scripts/cloud-identity -d
+
 notifications:
   webhooks:
     urls:
